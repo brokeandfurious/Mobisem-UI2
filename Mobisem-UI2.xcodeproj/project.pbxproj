@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0304898720808CB300100823 /* CustomNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0304898620808CB200100823 /* CustomNavigationController.swift */; };
+		0304898D2080AE4700100823 /* heart.json in Resources */ = {isa = PBXBuildFile; fileRef = 0304898C2080AE4700100823 /* heart.json */; };
+		0304898F2080BB9A00100823 /* Lottie.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0304898E2080BB9A00100823 /* Lottie.framework */; };
+		0323E7E0207F58A700C5262F /* QCMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0323E7DE207F58A700C5262F /* QCMethod.swift */; };
+		0323E7E1207F58A700C5262F /* BurgerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0323E7DF207F58A700C5262F /* BurgerView.swift */; };
 		03E964DD207E1D340050E952 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03E964DC207E1D340050E952 /* AppDelegate.swift */; };
 		03E964DF207E1D340050E952 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03E964DE207E1D340050E952 /* ViewController.swift */; };
 		03E964E2207E1D340050E952 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 03E964E0207E1D340050E952 /* Main.storyboard */; };
@@ -14,6 +19,12 @@
 		03E964E7207E1D350050E952 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 03E964E5207E1D350050E952 /* LaunchScreen.storyboard */; };
 		03E964F2207E1D360050E952 /* Mobisem_UI2Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03E964F1207E1D360050E952 /* Mobisem_UI2Tests.swift */; };
 		03E964FD207E1D360050E952 /* Mobisem_UI2UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03E964FC207E1D360050E952 /* Mobisem_UI2UITests.swift */; };
+		03E9650B207E3BEC0050E952 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03E9650A207E3BEC0050E952 /* DetailViewController.swift */; };
+		03E9650D207E4E970050E952 /* CategoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03E9650C207E4E970050E952 /* CategoryTableViewCell.swift */; };
+		03E9650F207E4EA60050E952 /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03E9650E207E4EA60050E952 /* Product.swift */; };
+		4577D1BA2AAEB55399131AE9 /* Pods_Mobisem_UI2UITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 406CB221AF39CA3F682EC511 /* Pods_Mobisem_UI2UITests.framework */; };
+		9DC8A2094B8940291201B02B /* Pods_Mobisem_UI2Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C2D156A05BDD23AE2ADB82D /* Pods_Mobisem_UI2Tests.framework */; };
+		DC7B7F27C82905DE695ECC61 /* Pods_Mobisem_UI2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6A0CBCAD6A960269674059A /* Pods_Mobisem_UI2.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,6 +45,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0304898620808CB200100823 /* CustomNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavigationController.swift; sourceTree = "<group>"; };
+		0304898C2080AE4700100823 /* heart.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = heart.json; sourceTree = "<group>"; };
+		0304898E2080BB9A00100823 /* Lottie.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Lottie.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		0323E7DE207F58A700C5262F /* QCMethod.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QCMethod.swift; sourceTree = "<group>"; };
+		0323E7DF207F58A700C5262F /* BurgerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BurgerView.swift; sourceTree = "<group>"; };
 		03E964D9207E1D340050E952 /* Mobisem-UI2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Mobisem-UI2.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		03E964DC207E1D340050E952 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		03E964DE207E1D340050E952 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -47,6 +63,18 @@
 		03E964F8207E1D360050E952 /* Mobisem-UI2UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Mobisem-UI2UITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		03E964FC207E1D360050E952 /* Mobisem_UI2UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mobisem_UI2UITests.swift; sourceTree = "<group>"; };
 		03E964FE207E1D360050E952 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		03E9650A207E3BEC0050E952 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		03E9650C207E4E970050E952 /* CategoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryTableViewCell.swift; sourceTree = "<group>"; };
+		03E9650E207E4EA60050E952 /* Product.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
+		2445AAF915D71BC26899F988 /* Pods-Mobisem-UI2UITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Mobisem-UI2UITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Mobisem-UI2UITests/Pods-Mobisem-UI2UITests.release.xcconfig"; sourceTree = "<group>"; };
+		406CB221AF39CA3F682EC511 /* Pods_Mobisem_UI2UITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Mobisem_UI2UITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		655C728CFCA7599803BA8677 /* Pods-Mobisem-UI2.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Mobisem-UI2.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Mobisem-UI2/Pods-Mobisem-UI2.debug.xcconfig"; sourceTree = "<group>"; };
+		71AFEE0DC7888679FF19DD69 /* Pods-Mobisem-UI2Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Mobisem-UI2Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Mobisem-UI2Tests/Pods-Mobisem-UI2Tests.debug.xcconfig"; sourceTree = "<group>"; };
+		7C2D156A05BDD23AE2ADB82D /* Pods_Mobisem_UI2Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Mobisem_UI2Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		84401B15C0DCA99FD4A39297 /* Pods-Mobisem-UI2UITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Mobisem-UI2UITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Mobisem-UI2UITests/Pods-Mobisem-UI2UITests.debug.xcconfig"; sourceTree = "<group>"; };
+		A085728FAA46BD726DBC6A63 /* Pods-Mobisem-UI2Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Mobisem-UI2Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Mobisem-UI2Tests/Pods-Mobisem-UI2Tests.release.xcconfig"; sourceTree = "<group>"; };
+		B6A0CBCAD6A960269674059A /* Pods_Mobisem_UI2.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Mobisem_UI2.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F044D03D7E202621444E91E6 /* Pods-Mobisem-UI2.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Mobisem-UI2.release.xcconfig"; path = "Pods/Target Support Files/Pods-Mobisem-UI2/Pods-Mobisem-UI2.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +82,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0304898F2080BB9A00100823 /* Lottie.framework in Frameworks */,
+				DC7B7F27C82905DE695ECC61 /* Pods_Mobisem_UI2.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -61,6 +91,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9DC8A2094B8940291201B02B /* Pods_Mobisem_UI2Tests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -68,12 +99,35 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4577D1BA2AAEB55399131AE9 /* Pods_Mobisem_UI2UITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0304898820808CC100100823 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				03E964DE207E1D340050E952 /* ViewController.swift */,
+				03E9650A207E3BEC0050E952 /* DetailViewController.swift */,
+				03E9650C207E4E970050E952 /* CategoryTableViewCell.swift */,
+				0304898620808CB200100823 /* CustomNavigationController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		0304898920808CEE00100823 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				03E964DC207E1D340050E952 /* AppDelegate.swift */,
+				03E9650E207E4EA60050E952 /* Product.swift */,
+				0323E7DF207F58A700C5262F /* BurgerView.swift */,
+				0323E7DE207F58A700C5262F /* QCMethod.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		03E964D0207E1D340050E952 = {
 			isa = PBXGroup;
 			children = (
@@ -81,6 +135,8 @@
 				03E964F0207E1D360050E952 /* Mobisem-UI2Tests */,
 				03E964FB207E1D360050E952 /* Mobisem-UI2UITests */,
 				03E964DA207E1D340050E952 /* Products */,
+				BBB9215C9208EFDBCAE33DD6 /* Pods */,
+				C2606D05705D2F1E5FF3B0A9 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -97,11 +153,12 @@
 		03E964DB207E1D340050E952 /* Mobisem-UI2 */ = {
 			isa = PBXGroup;
 			children = (
-				03E964DC207E1D340050E952 /* AppDelegate.swift */,
-				03E964DE207E1D340050E952 /* ViewController.swift */,
-				03E964E0207E1D340050E952 /* Main.storyboard */,
 				03E964E3207E1D350050E952 /* Assets.xcassets */,
+				03E964E0207E1D340050E952 /* Main.storyboard */,
+				0304898820808CC100100823 /* View */,
+				0304898920808CEE00100823 /* Model */,
 				03E964E5207E1D350050E952 /* LaunchScreen.storyboard */,
+				0304898C2080AE4700100823 /* heart.json */,
 				03E964E8207E1D350050E952 /* Info.plist */,
 			);
 			path = "Mobisem-UI2";
@@ -125,6 +182,30 @@
 			path = "Mobisem-UI2UITests";
 			sourceTree = "<group>";
 		};
+		BBB9215C9208EFDBCAE33DD6 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				655C728CFCA7599803BA8677 /* Pods-Mobisem-UI2.debug.xcconfig */,
+				F044D03D7E202621444E91E6 /* Pods-Mobisem-UI2.release.xcconfig */,
+				71AFEE0DC7888679FF19DD69 /* Pods-Mobisem-UI2Tests.debug.xcconfig */,
+				A085728FAA46BD726DBC6A63 /* Pods-Mobisem-UI2Tests.release.xcconfig */,
+				84401B15C0DCA99FD4A39297 /* Pods-Mobisem-UI2UITests.debug.xcconfig */,
+				2445AAF915D71BC26899F988 /* Pods-Mobisem-UI2UITests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		C2606D05705D2F1E5FF3B0A9 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				0304898E2080BB9A00100823 /* Lottie.framework */,
+				B6A0CBCAD6A960269674059A /* Pods_Mobisem_UI2.framework */,
+				7C2D156A05BDD23AE2ADB82D /* Pods_Mobisem_UI2Tests.framework */,
+				406CB221AF39CA3F682EC511 /* Pods_Mobisem_UI2UITests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -132,9 +213,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 03E96501207E1D360050E952 /* Build configuration list for PBXNativeTarget "Mobisem-UI2" */;
 			buildPhases = (
+				FD254849202DD732853B33D5 /* [CP] Check Pods Manifest.lock */,
 				03E964D5207E1D340050E952 /* Sources */,
 				03E964D6207E1D340050E952 /* Frameworks */,
 				03E964D7207E1D340050E952 /* Resources */,
+				EE21D2AC63CCC2D42C3819D4 /* [CP] Embed Pods Frameworks */,
+				5AA490E20570FE56CFF6D554 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -149,9 +233,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 03E96504207E1D360050E952 /* Build configuration list for PBXNativeTarget "Mobisem-UI2Tests" */;
 			buildPhases = (
+				878B4E3FAF37FFC6E76D1B91 /* [CP] Check Pods Manifest.lock */,
 				03E964E9207E1D360050E952 /* Sources */,
 				03E964EA207E1D360050E952 /* Frameworks */,
 				03E964EB207E1D360050E952 /* Resources */,
+				617DA9E0B8D646526F672BE9 /* [CP] Embed Pods Frameworks */,
+				E5EC4096B862FA5E6BAC388F /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -167,9 +254,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 03E96507207E1D360050E952 /* Build configuration list for PBXNativeTarget "Mobisem-UI2UITests" */;
 			buildPhases = (
+				E72B40620FB240E98EB93575 /* [CP] Check Pods Manifest.lock */,
 				03E964F4207E1D360050E952 /* Sources */,
 				03E964F5207E1D360050E952 /* Frameworks */,
 				03E964F6207E1D360050E952 /* Resources */,
+				D44BEB10FDB3D2F9FA371CB1 /* [CP] Embed Pods Frameworks */,
+				42F6C17A3FE78D04F72D1B4D /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -232,6 +322,7 @@
 				03E964E7207E1D350050E952 /* LaunchScreen.storyboard in Resources */,
 				03E964E4207E1D350050E952 /* Assets.xcassets in Resources */,
 				03E964E2207E1D340050E952 /* Main.storyboard in Resources */,
+				0304898D2080AE4700100823 /* heart.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -251,13 +342,169 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		42F6C17A3FE78D04F72D1B4D /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Mobisem-UI2UITests/Pods-Mobisem-UI2UITests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		5AA490E20570FE56CFF6D554 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Mobisem-UI2/Pods-Mobisem-UI2-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		617DA9E0B8D646526F672BE9 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Mobisem-UI2Tests/Pods-Mobisem-UI2Tests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		878B4E3FAF37FFC6E76D1B91 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Mobisem-UI2Tests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D44BEB10FDB3D2F9FA371CB1 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Mobisem-UI2UITests/Pods-Mobisem-UI2UITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E5EC4096B862FA5E6BAC388F /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Mobisem-UI2Tests/Pods-Mobisem-UI2Tests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E72B40620FB240E98EB93575 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Mobisem-UI2UITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		EE21D2AC63CCC2D42C3819D4 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Mobisem-UI2/Pods-Mobisem-UI2-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/lottie-ios/Lottie.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Lottie.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Mobisem-UI2/Pods-Mobisem-UI2-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FD254849202DD732853B33D5 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Mobisem-UI2-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		03E964D5207E1D340050E952 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0323E7E1207F58A700C5262F /* BurgerView.swift in Sources */,
+				03E9650B207E3BEC0050E952 /* DetailViewController.swift in Sources */,
 				03E964DF207E1D340050E952 /* ViewController.swift in Sources */,
+				0323E7E0207F58A700C5262F /* QCMethod.swift in Sources */,
+				0304898720808CB300100823 /* CustomNavigationController.swift in Sources */,
+				03E9650F207E4EA60050E952 /* Product.swift in Sources */,
 				03E964DD207E1D340050E952 /* AppDelegate.swift in Sources */,
+				03E9650D207E4E970050E952 /* CategoryTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -428,10 +675,13 @@
 		};
 		03E96502207E1D360050E952 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 655C728CFCA7599803BA8677 /* Pods-Mobisem-UI2.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 7U66J8F4HK;
 				INFOPLIST_FILE = "Mobisem-UI2/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -445,10 +695,13 @@
 		};
 		03E96503207E1D360050E952 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F044D03D7E202621444E91E6 /* Pods-Mobisem-UI2.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 7U66J8F4HK;
 				INFOPLIST_FILE = "Mobisem-UI2/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -462,6 +715,7 @@
 		};
 		03E96505207E1D360050E952 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 71AFEE0DC7888679FF19DD69 /* Pods-Mobisem-UI2Tests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -482,6 +736,7 @@
 		};
 		03E96506207E1D360050E952 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A085728FAA46BD726DBC6A63 /* Pods-Mobisem-UI2Tests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -502,6 +757,7 @@
 		};
 		03E96508207E1D360050E952 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 84401B15C0DCA99FD4A39297 /* Pods-Mobisem-UI2UITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -521,6 +777,7 @@
 		};
 		03E96509207E1D360050E952 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2445AAF915D71BC26899F988 /* Pods-Mobisem-UI2UITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
