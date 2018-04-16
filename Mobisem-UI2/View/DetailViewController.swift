@@ -15,6 +15,7 @@ class DetailViewController: UIViewController, UIGestureRecognizerDelegate {
     // Outlets for views
     @IBOutlet weak var productImageView: UIImageView!
     @IBOutlet weak var basketImageView: UIImageView!
+    @IBOutlet weak var greyBarButton: UIButton!
     
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var priceLabel: UILabel!
@@ -32,7 +33,13 @@ class DetailViewController: UIViewController, UIGestureRecognizerDelegate {
     //TODO: make it readonly computed property
     var initialDistanceBetweenItems: CGFloat {
         get {
-            return fabs(self.basketImageView.frame.minY - self.productImageView.frame.maxY)
+            return (self.basketImageView.frame.minY - self.productImageView.frame.maxY)
+        }
+    }
+    
+    var initialDistanceBetweenProductAndHeart: CGFloat {
+        get {
+            return (self.productImageView.frame.minY - self.animationView.frame.maxY)
         }
     }
     
@@ -72,12 +79,12 @@ class DetailViewController: UIViewController, UIGestureRecognizerDelegate {
         
         if bigSize {
             barAnimator = UIViewPropertyAnimator(duration: 0.25, curve: .easeInOut, animations: {
-                self.productImageView.transform = CGAffineTransform(scaleX: 0.45, y: 0.45)
+//                self.productImageView.transform = CGAffineTransform(scaleX: 0.45, y: 0.45)
                 self.greyBarView.transform = CGAffineTransform(scaleX: 1.0, y: 0.000001)
             })
         } else {
             barAnimator = UIViewPropertyAnimator(duration: 0.25, curve: .easeInOut, animations: {
-                self.productImageView.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
+//                self.productImageView.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
                 self.greyBarView.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
             })
         }
@@ -108,7 +115,7 @@ class DetailViewController: UIViewController, UIGestureRecognizerDelegate {
             //constraints
             animationView.translatesAutoresizingMaskIntoConstraints = false
             animationView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
-            animationView.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 55).isActive = true
+            animationView.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 75).isActive = true
             animationView.widthAnchor.constraint(equalToConstant: 75).isActive = true
             animationView.heightAnchor.constraint(equalToConstant: 75).isActive = true
         
@@ -124,58 +131,94 @@ class DetailViewController: UIViewController, UIGestureRecognizerDelegate {
         
         secretButton.addTarget(self, action: #selector(heartAnimationPlay), for: .allEvents)
         
-        // DISPLAY LINK TEST
-        displayLink = CADisplayLink(target: self, selector: #selector(displayLinkFunctionTest))
-        
         // OBSERVER STUFF
         fuckingTranslation = productImageView.frame.origin
-        
         self.productImageView.addObserver(self, forKeyPath: "center", options: .new, context: &myContext)
+        
+        // GREY BAR BUTTON TEST
+        greyBarButton.addTarget(self, action: #selector(greyBarButtonTapped), for: .allEvents)
     }
     
-    
-    @objc func displayLinkFunctionTest() {
-        if modularValue <= 100 {
-            basketSizeAnimation(true)
-            print("is this working")
-        }
+    @objc func greyBarButtonTapped(_ sender: UIButton) {
+        sender.preventRepeatedPresses()
+        print("button pressed")
+        let modalVC = self.storyboard?.instantiateViewController(withIdentifier: "ProductDetailsVC") as! ProductDetailsViewController
+        modalVC.product = self.product
+        self.present(modalVC, animated: true, completion: nil)
     }
     
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
         guard let _keyPath = keyPath, _keyPath == "center" else { return }
         
-        let imagePosition = self.productImageView.frame.maxY
-        let basketPosition = self.basketImageView.frame.minY
-//        let distanceToBottom = fabs(basketPosition - imagePosition) // always > 0
-        let distanceToBottom = basketPosition - imagePosition
-        let kalan = basketPosition - distanceToBottom
+        let imagePositionMaxY = self.productImageView.frame.maxY
+        let imagePositionMinY = self.productImageView.frame.minY
+        let basketPositionMinY = self.basketImageView.frame.minY
+        let heartPositionMaxY = self.animationView.frame.maxY
         
-//        print("DISTANCE TO BOTTOM: ", distanceToBottom)
-//        print("IMG POS: ", imagePosition, " - BASKET POS: ", basketPosition)
-        
-        // with every change increase basket scale
-            // starting with high distance low size, and goes to low distance high size
-                // distance 100 - scale 1.0
-                    // scale has to be a value that keeps increasing while distance is decreasing
-                        // dis 100, scale 0.5 - dis 50, scale 0.75,
-        
-        
-//        basketImageView.transform = CGAffineTransform(scaleX: CGFloat(roundf(Float(distanceToBottom/100))), y: CGFloat(roundf(Float(distanceToBottom/100))))
-//        print("FLOAT: ", CGFloat(roundf(Float(-distanceToBottom/100))))
-        
-        basketImageView.transform = CGAffineTransform(scaleX: (kalan/1000)*2.5, y: (kalan/1000)*2.5)
-//        print("KALAN: ", (kalan/1000)*2.5)
-        
-        if distanceToBottom > 0 && distanceToBottom < 10 {
-            debugPrint("You're so close to bottom")
-//        } else if distanceToBottom >= 10 && distanceToBottom < 40 {
-//            debugPrint("Hang on! You're almost there")
-        } else if distanceToBottom < 0 {
-            debugPrint("You're in my fucking face man!")
-        } else if distanceToBottom >= 150 {
-            basketImageView.transform = CGAffineTransform(scaleX: 1, y: 1)
-            debugPrint("work harder!")
+        // BASKET
+        let distanceToBottom = basketPositionMinY - imagePositionMaxY
+        let remaining = basketPositionMinY - distanceToBottom
+        let basketTransform = (remaining/1000)*3.5
+        let shrinkRate = abs(distanceToBottom / 100)
+
+
+        if distanceToBottom <= basketPositionMinY / 20 {
+            print("Distance: ", distanceToBottom)
+            print("/20 : ", basketPositionMinY / 20)
+            print("basketTransform: ", basketTransform)
+            print("shrink rate: ", shrinkRate)
+            UIView.animate(withDuration: 0.5) {
+                self.basketImageView.transform = CGAffineTransform(scaleX: basketTransform, y: basketTransform)
+                self.productImageView.transform = CGAffineTransform(scaleX: (1.0 - shrinkRate/3.3), y: (1.0 - shrinkRate/3.3))
+            }
+            animationView.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
+        } else {
+            UIView.animate(withDuration: 0.5) {
+                self.basketImageView.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
+            }
         }
+        
+        // HEART
+        let heartCenter = self.animationView.center.y
+        let imagePositionCenterY = self.productImageView.center.y
+        let distanceToTop = imagePositionCenterY - heartCenter
+        
+        if distanceToTop <= heartPositionMaxY {
+            let enlargeRate = abs(distanceToBottom / 100) / 2
+            print("enlarge rate: ", enlargeRate)
+            UIView.animate(withDuration: 0.25) {
+                self.animationView.transform = CGAffineTransform(scaleX: (1.0 + enlargeRate), y: (1.0 + enlargeRate))
+                self.productImageView.transform = CGAffineTransform(scaleX: (1.0 - enlargeRate/4), y: (1.0 - enlargeRate/4))
+            }
+        } else {
+            UIView.animate(withDuration: 0.25) {
+                self.animationView.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
+            }
+        }
+
+        
+//        let distanceToTop = abs(heartPositionMaxY - imagePositionMinY)
+//        let remainingHeart = abs(heartPositionMaxY - distanceToTop)
+//
+//        let
+//
+//
+//        if distanceToTop <= heartPositionMaxY && distanceToBottom >= basketPositionMinY / 5 {
+//            let enlargeRate = abs(distanceToTop / 100)
+//            print("ENLARGE RATE: ", enlargeRate)
+//            animationView.transform = CGAffineTransform(scaleX: (1.0 + enlargeRate), y: (1.0 + enlargeRate))
+//            productImageView.transform = CGAffineTransform(scaleX: (1.0 - shrinkRate/8), y: (1.0 - shrinkRate/8))
+//
+//
+//        }
+        
+        
+        
+        
+        
+        
+
+  
     }
     
     @objc func heartAnimationPlay() {
@@ -211,22 +254,15 @@ class DetailViewController: UIViewController, UIGestureRecognizerDelegate {
             if productImageView.frame.intersects(animationView.frame) {
                 
                 heartEnlargeAnimator = UIViewPropertyAnimator(duration: 0.25, dampingRatio: 0.7) {
-                    self.animationView.transform = CGAffineTransform(scaleX: 1.35, y: 1.35)
+//                    self.animationView.transform = CGAffineTransform(scaleX: 1.35, y: 1.35)
                 }
                 heartEnlargeAnimator.startAnimation()
                 
             } else {
                 heartShrinkAnimator = UIViewPropertyAnimator(duration: 0.25, dampingRatio: 0.7, animations: {
-                    self.animationView.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
+//                    self.animationView.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
                 })
                 heartShrinkAnimator.startAnimation()
-            }
-            
-            // TRANSLATION TESTS
-            let animationViewCoordinates = animationView.convert(animationView.frame.origin, to: self.view)
-//            print("Animation View Coordinates: ", animationViewCoordinates)
-            if translation.y <= animationViewCoordinates.y {
-//                print("HMMMMMMMMMMMMMMM")
             }
             
             break
@@ -234,7 +270,15 @@ class DetailViewController: UIViewController, UIGestureRecognizerDelegate {
             
             // Basket animation
             if productImageView.frame.intersects(basketImageView.frame) {
-                self.managerBasketAnimation(false)
+//                self.managerBasketAnimation(false)
+                UIView.animate(withDuration: 0.5) {
+                    self.productImageView.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
+                    self.basketImageView.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
+                }
+            }
+            
+            UIView.animate(withDuration: 0.5) {
+                self.productImageView.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
             }
             
             // Heart animation
@@ -274,12 +318,17 @@ class DetailViewController: UIViewController, UIGestureRecognizerDelegate {
             break
         case .cancelled,.failed:
             
+            // Back to original size
+            UIView.animate(withDuration: 0.5) {
+                self.productImageView.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
+                self.basketImageView.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
+            }
+            
             // Heart animation
             if productImageView.frame.intersects(animationView.frame) {
                 animationView.play()
             }
-            
-            self.managerBasketAnimation(productImageView.frame.intersects(basketImageView.frame))
+//            self.managerBasketAnimation(productImageView.frame.intersects(basketImageView.frame))
         default:
             debugPrint("default executed")
             break
@@ -330,4 +379,13 @@ class DetailViewController: UIViewController, UIGestureRecognizerDelegate {
 //    }
     
 
+}
+
+extension UIButton {
+    func preventRepeatedPresses(inNext seconds: Double = 1) {
+        self.isUserInteractionEnabled = false
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + seconds) {
+            self.isUserInteractionEnabled = true
+        }
+    }
 }

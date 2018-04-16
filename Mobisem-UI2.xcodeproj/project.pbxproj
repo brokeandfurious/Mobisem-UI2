@@ -12,6 +12,8 @@
 		0304898F2080BB9A00100823 /* Lottie.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0304898E2080BB9A00100823 /* Lottie.framework */; };
 		0323E7E0207F58A700C5262F /* QCMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0323E7DE207F58A700C5262F /* QCMethod.swift */; };
 		0323E7E1207F58A700C5262F /* BurgerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0323E7DF207F58A700C5262F /* BurgerView.swift */; };
+		03B2ED6720849D47003C0822 /* ProductDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B2ED6620849D47003C0822 /* ProductDetailsViewController.swift */; };
+		03B2ED692084A2E3003C0822 /* ProductCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B2ED682084A2E3003C0822 /* ProductCollectionViewCell.swift */; };
 		03E964DD207E1D340050E952 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03E964DC207E1D340050E952 /* AppDelegate.swift */; };
 		03E964DF207E1D340050E952 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03E964DE207E1D340050E952 /* ViewController.swift */; };
 		03E964E2207E1D340050E952 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 03E964E0207E1D340050E952 /* Main.storyboard */; };
@@ -50,6 +52,8 @@
 		0304898E2080BB9A00100823 /* Lottie.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Lottie.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		0323E7DE207F58A700C5262F /* QCMethod.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QCMethod.swift; sourceTree = "<group>"; };
 		0323E7DF207F58A700C5262F /* BurgerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BurgerView.swift; sourceTree = "<group>"; };
+		03B2ED6620849D47003C0822 /* ProductDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailsViewController.swift; sourceTree = "<group>"; };
+		03B2ED682084A2E3003C0822 /* ProductCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductCollectionViewCell.swift; sourceTree = "<group>"; };
 		03E964D9207E1D340050E952 /* Mobisem-UI2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Mobisem-UI2.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		03E964DC207E1D340050E952 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		03E964DE207E1D340050E952 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -113,6 +117,8 @@
 				03E9650A207E3BEC0050E952 /* DetailViewController.swift */,
 				03E9650C207E4E970050E952 /* CategoryTableViewCell.swift */,
 				0304898620808CB200100823 /* CustomNavigationController.swift */,
+				03B2ED6620849D47003C0822 /* ProductDetailsViewController.swift */,
+				03B2ED682084A2E3003C0822 /* ProductCollectionViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -499,10 +505,12 @@
 			files = (
 				0323E7E1207F58A700C5262F /* BurgerView.swift in Sources */,
 				03E9650B207E3BEC0050E952 /* DetailViewController.swift in Sources */,
+				03B2ED692084A2E3003C0822 /* ProductCollectionViewCell.swift in Sources */,
 				03E964DF207E1D340050E952 /* ViewController.swift in Sources */,
 				0323E7E0207F58A700C5262F /* QCMethod.swift in Sources */,
 				0304898720808CB300100823 /* CustomNavigationController.swift in Sources */,
 				03E9650F207E4EA60050E952 /* Product.swift in Sources */,
+				03B2ED6720849D47003C0822 /* ProductDetailsViewController.swift in Sources */,
 				03E964DD207E1D340050E952 /* AppDelegate.swift in Sources */,
 				03E9650D207E4E970050E952 /* CategoryTableViewCell.swift in Sources */,
 			);
