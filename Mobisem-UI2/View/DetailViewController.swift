@@ -271,9 +271,25 @@ class DetailViewController: UIViewController, UIGestureRecognizerDelegate {
             // Basket animation
             if productImageView.frame.intersects(basketImageView.frame) {
 //                self.managerBasketAnimation(false)
+                
+                let dropAnimator = UIViewPropertyAnimator(duration: 0.25, curve: .easeIn) {
+                    let dropAnimatorFirstKeyFrame = UIViewPropertyAnimator(duration: 0.15, curve: .easeIn, animations: {
+                        self.productImageView.transform = CGAffineTransform(scaleX: 0.3, y: 0.3)
+                        self.productImageView.transform = CGAffineTransform(translationX: 0, y: -150)
+                    })
+                    dropAnimatorFirstKeyFrame.startAnimation()
+                    
+                    self.productImageView.transform = CGAffineTransform(translationX: 0, y: 400)
+                    print("TEST")
+                }
+//                dropAnimator.startAnimation(afterDelay: 0.5)
+                dropAnimator.startAnimation()
+                
+                
                 UIView.animate(withDuration: 0.5) {
-                    self.productImageView.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
+//                    self.productImageView.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
                     self.basketImageView.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
+                    
                 }
             }
             
