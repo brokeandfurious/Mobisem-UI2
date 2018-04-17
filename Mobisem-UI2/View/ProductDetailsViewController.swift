@@ -12,49 +12,39 @@ import Foundation
 class ProductDetailsViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
     
     var product: Product?
+    var productDetails = ProductDetails.createProductDetails()
     
     // VIEW
     @IBOutlet weak var containerView: UIView!
-    @IBOutlet weak var blurView: UIVisualEffectView!
     @IBOutlet weak var brandLabel: UILabel!
-    var curtainLayer = UIView()
+    @IBOutlet weak var bottomSettingsView: UIView!
+    @IBOutlet weak var collectionView: UICollectionView!
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
         updateUI()
         arrangeShadows(view: containerView)
+        arrangeCorners(view: bottomSettingsView, cornerSelection1: .layerMaxXMaxYCorner, cornerSelection2: .layerMinXMaxYCorner, cornerRadius: 15)
+        arrangeCorners(view: collectionView, cornerSelection1: .layerMinXMinYCorner, cornerSelection2: .layerMaxXMinYCorner, cornerRadius: 15)
         
-        // CURTAIN
-        let curtainAnimator = UIViewPropertyAnimator()
-        curtainAnimator.addAnimations {
-            self.addCurtain()
-        }
-        curtainAnimator.addCompletion {_ in 
-            print("completion")
-            self.curtainLayer.alpha = 0.5
-        }
-        
-        
-//        UIView.animate(withDuration: 0.5, animations: {
-//            self.addCurtain()
-//        }) { (finished: Bool) in
-//            print("completion test")
-//            self.curtainLayer.alpha = 0.4
-//        }
+        self.collectionView.delegate = self
+        self.collectionView.dataSource = self
+        self.collectionView.allowsMultipleSelection = true
     }
     
     @IBAction func closePopup(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
     }
     
-    func addCurtain() {
-        curtainLayer.isOpaque = false
-        curtainLayer.alpha = 0
-        curtainLayer.frame = self.view.frame
-        curtainLayer.backgroundColor = .black
-        self.view.addSubview(curtainLayer)
-        self.view.sendSubview(toBack: curtainLayer)
+    @IBAction func checkButtonTapped(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
     }
+    
+    @IBAction func cancelButtonTapped(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
     
     func updateUI() {
         brandLabel.text = product?.brand
@@ -70,26 +60,61 @@ class ProductDetailsViewController: UIViewController, UICollectionViewDelegate, 
 //        view.layer.shouldRasterize = true
     }
     
+    func arrangeCorners(view: UIView, cornerSelection1: CACornerMask, cornerSelection2: CACornerMask, cornerSelection3: CACornerMask?=nil, cornerSelection4: CACornerMask?=nil, cornerRadius: CGFloat) {
+        view.clipsToBounds = true
+        view.layer.cornerRadius = cornerRadius
+        view.layer.maskedCorners = [cornerSelection1, cornerSelection2]
+    }
+    
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 1
+        return productDetails.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ProductDetailsCell", for: indexPath) as! ProductCollectionViewCell
         
+        let p = indexPath.row
+        
         if (product != nil) {
-            print("PRODUCT ISN'T NIL")
-            cell.testButton.setTitle(product?.title, for: .normal)
+            cell.productDetails = self.productDetails[p]
             return cell
         } else {
-            print("PRODUCT IS NIL")
             return cell
         }
         
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        let cell: ProductCollectionViewCell? = collectionView.cellForItem(at: indexPath) as? ProductCollectionViewCell
+        
+        print("Selected Cell: \(indexPath.row)")
+        
+        let animator = UIViewPropertyAnimator(duration: 0.5, curve: .easeIn) {
+            cell?.roundedView.backgroundColor = .orange
+            cell?.roundedView.layer.borderColor = UIColor.white.cgColor
+            cell?.cellButton.titleLabel?.textColor = .white
+        }
+        animator.startAnimation()
+
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
+        let cell: ProductCollectionViewCell? = collectionView.cellForItem(at: indexPath) as? ProductCollectionViewCell
+        
+        print("DE-selected Cell: \(indexPath.row)")
+        
+        let animator = UIViewPropertyAnimator(duration: 0.5, curve: .easeIn) {
+            cell?.roundedView.backgroundColor = .white
+            cell?.roundedView.layer.borderColor = UIColor.lightGray.cgColor
+            cell?.cellButton.titleLabel?.textColor = .black
+        }
+        animator.startAnimation()
+
     }
     
 }

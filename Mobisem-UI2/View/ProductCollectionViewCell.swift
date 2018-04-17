@@ -10,17 +10,37 @@ import UIKit
 
 class ProductCollectionViewCell: UICollectionViewCell {
     
-    @IBOutlet weak var testButton: UIButton!
+    @IBOutlet weak var cellButton: UIButton!
+    @IBOutlet weak var roundedView: UIView!
     
-    var product: Product? {
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+    }
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        if (roundedView) != nil {
+            self.roundedView.backgroundColor = .red
+            self.cellButton.tintColor = .red
+        } else {
+            print("nil?")
+        }
+    }
+    
+    var productDetails: ProductDetails? {
         didSet {
             updateUI()
-            print("accessed the cell.")
+            arrangeCellButtons()
         }
     }
     
     func updateUI() {
-        testButton.setTitle(product?.brand, for: .normal)
+        cellButton.setTitle(productDetails?.size, for: .normal)
+    }
+    
+    func arrangeCellButtons() {
+        roundedView.layer.borderWidth = 0.5
+        roundedView.layer.borderColor = UIColor.lightGray.cgColor
     }
     
 }

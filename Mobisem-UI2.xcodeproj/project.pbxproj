@@ -14,6 +14,8 @@
 		0323E7E1207F58A700C5262F /* BurgerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0323E7DF207F58A700C5262F /* BurgerView.swift */; };
 		03B2ED6720849D47003C0822 /* ProductDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B2ED6620849D47003C0822 /* ProductDetailsViewController.swift */; };
 		03B2ED692084A2E3003C0822 /* ProductCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B2ED682084A2E3003C0822 /* ProductCollectionViewCell.swift */; };
+		03B8BD072085D2B400C5AF47 /* ProductDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B8BD062085D2B400C5AF47 /* ProductDetails.swift */; };
+		03B8BD092085DDC400C5AF47 /* NewHeartAnimation.json in Resources */ = {isa = PBXBuildFile; fileRef = 03B8BD082085DDC400C5AF47 /* NewHeartAnimation.json */; };
 		03E964DD207E1D340050E952 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03E964DC207E1D340050E952 /* AppDelegate.swift */; };
 		03E964DF207E1D340050E952 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03E964DE207E1D340050E952 /* ViewController.swift */; };
 		03E964E2207E1D340050E952 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 03E964E0207E1D340050E952 /* Main.storyboard */; };
@@ -54,6 +56,8 @@
 		0323E7DF207F58A700C5262F /* BurgerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BurgerView.swift; sourceTree = "<group>"; };
 		03B2ED6620849D47003C0822 /* ProductDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailsViewController.swift; sourceTree = "<group>"; };
 		03B2ED682084A2E3003C0822 /* ProductCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductCollectionViewCell.swift; sourceTree = "<group>"; };
+		03B8BD062085D2B400C5AF47 /* ProductDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetails.swift; sourceTree = "<group>"; };
+		03B8BD082085DDC400C5AF47 /* NewHeartAnimation.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = NewHeartAnimation.json; sourceTree = SOURCE_ROOT; };
 		03E964D9207E1D340050E952 /* Mobisem-UI2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Mobisem-UI2.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		03E964DC207E1D340050E952 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		03E964DE207E1D340050E952 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -130,6 +134,7 @@
 				03E9650E207E4EA60050E952 /* Product.swift */,
 				0323E7DF207F58A700C5262F /* BurgerView.swift */,
 				0323E7DE207F58A700C5262F /* QCMethod.swift */,
+				03B8BD062085D2B400C5AF47 /* ProductDetails.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -164,6 +169,7 @@
 				0304898820808CC100100823 /* View */,
 				0304898920808CEE00100823 /* Model */,
 				03E964E5207E1D350050E952 /* LaunchScreen.storyboard */,
+				03B8BD082085DDC400C5AF47 /* NewHeartAnimation.json */,
 				0304898C2080AE4700100823 /* heart.json */,
 				03E964E8207E1D350050E952 /* Info.plist */,
 			);
@@ -327,6 +333,7 @@
 			files = (
 				03E964E7207E1D350050E952 /* LaunchScreen.storyboard in Resources */,
 				03E964E4207E1D350050E952 /* Assets.xcassets in Resources */,
+				03B8BD092085DDC400C5AF47 /* NewHeartAnimation.json in Resources */,
 				03E964E2207E1D340050E952 /* Main.storyboard in Resources */,
 				0304898D2080AE4700100823 /* heart.json in Resources */,
 			);
@@ -509,6 +516,7 @@
 				03E964DF207E1D340050E952 /* ViewController.swift in Sources */,
 				0323E7E0207F58A700C5262F /* QCMethod.swift in Sources */,
 				0304898720808CB300100823 /* CustomNavigationController.swift in Sources */,
+				03B8BD072085D2B400C5AF47 /* ProductDetails.swift in Sources */,
 				03E9650F207E4EA60050E952 /* Product.swift in Sources */,
 				03B2ED6720849D47003C0822 /* ProductDetailsViewController.swift in Sources */,
 				03E964DD207E1D340050E952 /* AppDelegate.swift in Sources */,

@@ -19,11 +19,11 @@ class DetailViewController: UIViewController, UIGestureRecognizerDelegate {
     
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var priceLabel: UILabel!
-        
+    @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var greyBarView: UIView!
     
     // Animators
-    let animationView = LOTAnimationView.init(name: "heart")
+    let animationView = LOTAnimationView.init(name: "NewHeartAnimation")
     var heartShrinkAnimator = UIViewPropertyAnimator()
     var heartEnlargeAnimator = UIViewPropertyAnimator()
     
@@ -48,13 +48,17 @@ class DetailViewController: UIViewController, UIGestureRecognizerDelegate {
     var product: Product?
     var navButton: BurgerView!
     
+    // Bools
     var menuStateOn: Bool = false
     var favoritesOn: Bool = false
+    var translateSwitchOn: Bool = false
+    var panGestureOn: Bool = false
     
+    var priceLabelCoordinates: CGRect!
+    var titleLabelCoordinates: CGRect!
+    var descriptionLabelCoordinates: CGRect!
     @objc var fuckingTranslation = CGPoint()
     private var myContext = 0
-    var displayLink = CADisplayLink()
-    var modularValue = CGFloat()
     
     // Some test variables
     var panGesture:UIPanGestureRecognizer!
@@ -92,9 +96,46 @@ class DetailViewController: UIViewController, UIGestureRecognizerDelegate {
         
     }
     
+    private func viewTranslateAnimation() {
+        let translationYCalculation = self.view.frame.maxY / 4
+        let animateToCenter = UIViewPropertyAnimator(duration: 0.3, curve: .easeIn) {
+            self.priceLabel.transform = CGAffineTransform(translationX: 1.0, y: (1.0 + translationYCalculation))
+            self.titleLabel.transform = CGAffineTransform(translationX: 1.0, y: (1.0 + translationYCalculation))
+            self.descriptionLabel.transform = CGAffineTransform(translationX: 1.0, y: (1.0 + translationYCalculation))
+        }
+        
+        let animateBack = UIViewPropertyAnimator(duration: 0.3, curve: .easeIn) {
+//            self.priceLabel.transform = CGAffineTransform(translationX: self.priceLabelCoordinates.x, y: self.priceLabelCoordinates.y)
+//            self.titleLabel.transform = CGAffineTransform(translationX: self.titleLabelCoordinates.x, y: self.titleLabelCoordinates.y)
+//            self.descriptionLabel.transform = CGAffineTransform(translationX: self.descriptionLabelCoordinates.x, y: self.descriptionLabelCoordinates.y)
+            
+            self.priceLabel.frame.origin.y = self.priceLabelCoordinates.maxY
+            self.titleLabel.frame.origin.y = self.titleLabelCoordinates.maxY
+            self.descriptionLabel.frame.origin.y = self.descriptionLabelCoordinates.maxY
+        }
+
+        if !translateSwitchOn {
+            translateSwitchOn = true
+            animateToCenter.startAnimation()
+        } else {
+            translateSwitchOn = false
+            animateBack.startAnimation()
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        priceLabelCoordinates = priceLabel.frame
+        titleLabelCoordinates = titleLabel.frame
+        descriptionLabelCoordinates = descriptionLabel.frame
+        
+        let translationYCalculation = self.view.frame.maxY / 2
+        let decimalTranslationValue = translationYCalculation / 10
+        print(translationYCalculation)
+        
         updateUI()
+        
 //        arrangeNavigationBar()
         
         // Navigation Bar Settings TEMPORARY
@@ -141,10 +182,13 @@ class DetailViewController: UIViewController, UIGestureRecognizerDelegate {
     
     @objc func greyBarButtonTapped(_ sender: UIButton) {
         sender.preventRepeatedPresses()
-        print("button pressed")
         let modalVC = self.storyboard?.instantiateViewController(withIdentifier: "ProductDetailsVC") as! ProductDetailsViewController
+        modalVC.modalTransitionStyle = .flipHorizontal
+        modalVC.modalPresentationStyle = .overCurrentContext
         modalVC.product = self.product
-        self.present(modalVC, animated: true, completion: nil)
+        present(modalVC, animated: true) {
+            print("SUCCESS")
+        }
     }
     
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
@@ -161,39 +205,44 @@ class DetailViewController: UIViewController, UIGestureRecognizerDelegate {
         let basketTransform = (remaining/1000)*3.5
         let shrinkRate = abs(distanceToBottom / 100)
 
-
-        if distanceToBottom <= basketPositionMinY / 20 {
-            print("Distance: ", distanceToBottom)
-            print("/20 : ", basketPositionMinY / 20)
-            print("basketTransform: ", basketTransform)
-            print("shrink rate: ", shrinkRate)
-            UIView.animate(withDuration: 0.5) {
-                self.basketImageView.transform = CGAffineTransform(scaleX: basketTransform, y: basketTransform)
-                self.productImageView.transform = CGAffineTransform(scaleX: (1.0 - shrinkRate/3.3), y: (1.0 - shrinkRate/3.3))
+        if panGestureOn {
+            if distanceToBottom <= basketPositionMinY / 20 {
+                //            print("Distance: ", distanceToBottom)
+                //            print("/20 : ", basketPositionMinY / 20)
+                //            print("basketTransform: ", basketTransform)
+                //            print("shrink rate: ", shrinkRate)
+                UIView.animate(withDuration: 0.5) {
+                    self.basketImageView.transform = CGAffineTransform(scaleX: basketTransform, y: basketTransform)
+                    self.productImageView.transform = CGAffineTransform(scaleX: (1.0 - shrinkRate/3.3), y: (1.0 - shrinkRate/3.3))
+                }
+                animationView.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
+            } else {
+                UIView.animate(withDuration: 0.5) {
+                    self.basketImageView.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
+                }
             }
-            animationView.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
+            
+            // HEART
+            let heartCenter = self.animationView.center.y
+            let imagePositionCenterY = self.productImageView.center.y
+            let distanceToTop = imagePositionCenterY - heartCenter
+            
+            if distanceToTop <= (heartPositionMaxY * 2) {
+                let enlargeRate = abs(distanceToBottom / 100) / 2
+                //            print("enlarge rate: ", enlargeRate)
+                UIView.animate(withDuration: 0.25) {
+                    self.animationView.transform = CGAffineTransform(scaleX: (1.0 + enlargeRate), y: (1.0 + enlargeRate))
+                    self.productImageView.transform = CGAffineTransform(scaleX: (1.0 - enlargeRate/4), y: (1.0 - enlargeRate/4))
+                }
+            } else {
+                UIView.animate(withDuration: 0.25) {
+                    self.animationView.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
+                }
+            }
         } else {
-            UIView.animate(withDuration: 0.5) {
-                self.basketImageView.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
-            }
-        }
-        
-        // HEART
-        let heartCenter = self.animationView.center.y
-        let imagePositionCenterY = self.productImageView.center.y
-        let distanceToTop = imagePositionCenterY - heartCenter
-        
-        if distanceToTop <= heartPositionMaxY {
-            let enlargeRate = abs(distanceToBottom / 100) / 2
-            print("enlarge rate: ", enlargeRate)
-            UIView.animate(withDuration: 0.25) {
-                self.animationView.transform = CGAffineTransform(scaleX: (1.0 + enlargeRate), y: (1.0 + enlargeRate))
-                self.productImageView.transform = CGAffineTransform(scaleX: (1.0 - enlargeRate/4), y: (1.0 - enlargeRate/4))
-            }
-        } else {
-            UIView.animate(withDuration: 0.25) {
-                self.animationView.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
-            }
+            // regular sizes
+            self.basketImageView.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
+            self.animationView.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
         }
 
         
@@ -211,24 +260,17 @@ class DetailViewController: UIViewController, UIGestureRecognizerDelegate {
 //
 //
 //        }
-        
-        
-        
-        
-        
-        
-
   
     }
     
     @objc func heartAnimationPlay() {
         if !favoritesOn {
             favoritesOn = true
-            animationView.play(fromProgress: 0, toProgress: 0.5, withCompletion: nil)
+            animationView.play(fromProgress: 0, toProgress: 1, withCompletion: nil)
             animationView.animationSpeed = 2
         } else if favoritesOn {
             favoritesOn = false
-            animationView.play(fromProgress: 0.5, toProgress: 0, withCompletion: nil)
+            animationView.play(fromProgress: 1, toProgress: 0, withCompletion: nil)
             animationView.animationSpeed = 2
         }
     }
@@ -244,7 +286,13 @@ class DetailViewController: UIViewController, UIGestureRecognizerDelegate {
         
         switch state {
         case .began:
+            self.panGestureOn = true
+            
             self.barSizeAnimation(true)
+            
+            // Animate views to the center
+//            self.viewTranslateAnimation()
+            
             break
         case .changed:
             // Basket Animation
@@ -268,6 +316,8 @@ class DetailViewController: UIViewController, UIGestureRecognizerDelegate {
             break
         case .ended:
             
+            self.panGestureOn = false
+            
             // Basket animation
             if productImageView.frame.intersects(basketImageView.frame) {
 //                self.managerBasketAnimation(false)
@@ -278,9 +328,8 @@ class DetailViewController: UIViewController, UIGestureRecognizerDelegate {
                         self.productImageView.transform = CGAffineTransform(translationX: 0, y: -150)
                     })
                     dropAnimatorFirstKeyFrame.startAnimation()
-                    
+                    self.productImageView.transform = CGAffineTransform(scaleX: 0.3, y: 0.3)
                     self.productImageView.transform = CGAffineTransform(translationX: 0, y: 400)
-                    print("TEST")
                 }
 //                dropAnimator.startAnimation(afterDelay: 0.5)
                 dropAnimator.startAnimation()
@@ -291,6 +340,10 @@ class DetailViewController: UIViewController, UIGestureRecognizerDelegate {
                     self.basketImageView.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
                     
                 }
+                
+                // Animate views back
+//                viewTranslateAnimation()
+                
             }
             
             UIView.animate(withDuration: 0.5) {
@@ -320,8 +373,6 @@ class DetailViewController: UIViewController, UIGestureRecognizerDelegate {
                 }
             }
             
-
-            
             // Bar size animation
             self.barSizeAnimation(false)
             
@@ -334,6 +385,8 @@ class DetailViewController: UIViewController, UIGestureRecognizerDelegate {
             break
         case .cancelled,.failed:
             
+            self.panGestureOn = false
+            
             // Back to original size
             UIView.animate(withDuration: 0.5) {
                 self.productImageView.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
@@ -344,7 +397,10 @@ class DetailViewController: UIViewController, UIGestureRecognizerDelegate {
             if productImageView.frame.intersects(animationView.frame) {
                 animationView.play()
             }
-//            self.managerBasketAnimation(productImageView.frame.intersects(basketImageView.frame))
+            
+            // Animate views back to where they were
+//            viewTranslateAnimation()
+            
         default:
             debugPrint("default executed")
             break
